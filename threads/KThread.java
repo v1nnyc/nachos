@@ -351,6 +351,12 @@ public class KThread {
 						System.out.println("test 2");
 				}
 					});
+			child1.setName("child1").fork();
+
+			child1.join();
+			System.out.println("After joining, child1 should be finished.");
+			System.out.println("is it? " + (child1.status == statusFinished));
+			Lib.assertTrue((child1.status == statusFinished), " Expected child1 to be finished.");
 		}
 
 	/**
