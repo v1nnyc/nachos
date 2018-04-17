@@ -358,6 +358,7 @@ public class KThread {
 			KThread child1 = new KThread( new Runnable () {
 				public void run() {
 						System.out.println("test 2");
+						System.out.println("stuck in here");
 				}
 					});
 			child1.setName("child1").fork();
