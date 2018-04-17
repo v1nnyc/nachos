@@ -84,6 +84,7 @@ public class Alarm {
 				t1 = Machine.timer().getTime();
 				System.out.println ("alarmTest1: waited for " + (t1 - t0) + " ticks");
 			}
+			
 		}
 
 		// Implement more test methods here ...
