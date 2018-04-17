@@ -280,11 +280,40 @@ public class KThread {
 	 * return immediately. This method must only be called once; the second call
 	 * is not guaranteed to return. This thread must not be the current thread.
 	 */
+	//private status Lock joinL = new Lock();
+
+ 	//private ThreadQueue joinQ = ThreadedKernel.scheduler.newThreadQueue(true);
+
+	private KThread joinThread = null;
+
 	public void join() {
 		Lib.debug(dbgThread, "Joining to thread: " + toString());
 
 		Lib.assertTrue(this != currentThread);
 
+		Lib.assertTrue(joinThread == null);
+
+		joinThread = this;
+
+		//joinL.acquire();
+
+		//if thread is already finished
+		if(status == statusFinished){
+			//joinL.release();
+			joinThread = null;
+			return;
+		}
+
+		//if thread is not finished and another calls
+		else{
+			while(status != statusFinished){
+				this.sleep();
+			}
+			this.ready();
+			joinThread = null;
+			return;
+			//joinL.release();
+		}
 	}
 
 	// Place Join test code in the KThread class and invoke test methods
@@ -478,6 +507,8 @@ public class KThread {
 	private Runnable target;
 
 	private TCB tcb;
+
+
 
 	/**
 	 * Unique identifer for this thread. Used to deterministically compare
