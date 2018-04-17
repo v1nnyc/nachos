@@ -315,11 +315,13 @@ public class KThread {
 			while(this.status != statusFinished){
 
 				Machine.interrupt().disable();
-				System.out.println("before sleep");
+
 				sleep();
 				System.out.println("stuck in here!");
 			}
+			System.out.println("before ready");
 			currentThread.ready();
+			System.out.println("after sleep");
 			Machine.interrupt().enable();
 			joinThread = null;
 		}
