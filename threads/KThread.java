@@ -336,8 +336,9 @@ public class KThread {
 
 				for (int i = 0; i < 5; i++) {
 				    System.out.println ("busy...");
-				    //KThread.currentThread().yield();
+
 				}
+				KThread.currentThread().yield();
 
 				child1.join();
 				System.out.println("After joining, child1 should be finished.");
