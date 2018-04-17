@@ -299,7 +299,6 @@ public class KThread {
 		if(status == statusFinished){
 			System.out.println(toString()+ " is already finished");
 			joinThread = null;
-			return;
 		}
 
 		//if thread is not finished and another calls
@@ -314,7 +313,7 @@ public class KThread {
 			System.out.println(toString()+ " is NOT finished");
 			System.out.println(this.status);
 			while(this.status != statusFinished){
-				
+
 				Machine.interrupt().disable();
 				sleep();
 				System.out.println("stuck in here!");
@@ -322,8 +321,9 @@ public class KThread {
 			currentThread.ready();
 			Machine.interrupt().enable();
 			joinThread = null;
-			return;
 		}
+
+		return;
 	}
 
 	// Place Join test code in the KThread class and invoke test methods
