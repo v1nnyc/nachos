@@ -297,6 +297,7 @@ public class KThread {
 
 		//if thread is already finished
 		if(status == statusFinished){
+			System.out.println(toString()+ " is already finished");
 			joinThread = null;
 			return;
 		}
