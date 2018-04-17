@@ -282,7 +282,7 @@ public class KThread {
 	 */
 	//private status Lock joinL = new Lock();
 
- 	//private ThreadQueue joinQ = ThreadedKernel.scheduler.newThreadQueue(true);
+ 	private ThreadQueue joinQ = ThreadedKernel.scheduler.newThreadQueue(true);
 
 	private KThread joinThread = null;
 
@@ -306,6 +306,12 @@ public class KThread {
 
 		//if thread is not finished and another calls
 		else{
+			Machine.interrupt().disable();
+			this.joinQ.waitForAccess(currentThread);
+			Machine.interrupt().enable();
+			
+		}
+		/*else{
 			while(this.status != this.statusFinished){
 				Machine.interrupt().disable();
 				sleep();
@@ -315,7 +321,7 @@ public class KThread {
 			joinThread = null;
 			return;
 			//joinL.release();
-		}
+		}*/
 	}
 
 	// Place Join test code in the KThread class and invoke test methods
@@ -351,7 +357,6 @@ public class KThread {
 			KThread child1 = new KThread( new Runnable () {
 				public void run() {
 						System.out.println("test 2");
-						child1.finish();
 				}
 					});
 			child1.setName("child1").fork();
