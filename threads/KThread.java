@@ -249,9 +249,12 @@ public class KThread {
 	 */
 	public static void sleep() {
 		Lib.debug(dbgThread, "Sleeping thread: " + currentThread.toString());
+
 		Lib.assertTrue(Machine.interrupt().disabled());
+
 		if (currentThread.status != statusFinished)
 			currentThread.status = statusBlocked;
+
 		runNextThread();
 	}
 
@@ -317,7 +320,7 @@ public class KThread {
 		KThread nextThread = readyQueue.nextThread();
 		if (nextThread == null)
 			nextThread = idleThread;
-		System.out.println(Machine.timer().getTime());
+
 		nextThread.run();
 	}
 

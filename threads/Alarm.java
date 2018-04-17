@@ -66,9 +66,7 @@ public class Alarm {
 		Machine.interrupt().disable();
 
 		sleepyThreads.add(thread);
-		System.out.println(Machine.timer().getTime());
 		KThread.sleep();
-		System.out.println(Machine.timer().getTime());
 
 		Machine.interrupt().enable();
 
@@ -92,7 +90,7 @@ public class Alarm {
 
 		// Invoke Alarm.selfTest() from ThreadedKernel.selfTest()
 		public static void selfTest() {
-			alarmTest1();
+		alarmTest1();
 
 		// Invoke your other test methods here ...
 		}
