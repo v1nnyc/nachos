@@ -314,7 +314,7 @@ public class KThread {
 			Machine.interrupt().disable();
 			sleep();
 			this.run();
-			currentThread.ready();
+			currentThread.run();
 			Machine.interrupt().enable();/*
 			System.out.println(toString()+ " is NOT finished");
 			System.out.println(this.status);
