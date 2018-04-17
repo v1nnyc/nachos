@@ -295,11 +295,8 @@ public class KThread {
 
 		joinThread = this;
 
-		//joinL.acquire();
-
 		//if thread is already finished
 		if(status == statusFinished){
-			//joinL.release();
 			joinThread = null;
 			return;
 		}
@@ -321,7 +318,6 @@ public class KThread {
 			Machine.interrupt().enable();
 			joinThread = null;
 			return;
-			//joinL.release();
 		}
 	}
 
@@ -359,6 +355,7 @@ public class KThread {
 				public void run() {
 						System.out.println("test 2");
 						System.out.println("stuck in here");
+						return;
 				}
 					});
 			child1.setName("child1").fork();
