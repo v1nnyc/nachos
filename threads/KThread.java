@@ -307,9 +307,11 @@ public class KThread {
 		//if thread is not finished and another calls
 		else{
 			while(status != statusFinished){
-				this.sleep();
+				Machine.interrupt().disable();
+				sleep();
 			}
-			this.ready();
+			currentThread.ready();
+			Machine.interrupt().enable();
 			joinThread = null;
 			return;
 			//joinL.release();
