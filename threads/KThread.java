@@ -351,19 +351,19 @@ public class KThread {
     }
 
 		private static void joinTest2(){
-			KThread child1 = new KThread( new Runnable () {
+			KThread child2 = new KThread( new Runnable () {
 				public void run() {
 						System.out.println("test 2");
 						System.out.println("stuck in here");
 						return;
 				}
 					});
-			child1.setName("child1").fork();
+			child2.setName("child1").fork();
 
-			child1.join();
+			child2.join();
 			System.out.println("After joining, child1 should be finished.");
-			System.out.println("is it? " + (child1.status == statusFinished));
-			Lib.assertTrue((child1.status == statusFinished), " Expected child1 to be finished.");
+			System.out.println("is it? " + (child2.status == statusFinished));
+			Lib.assertTrue((child2.status == statusFinished), " Expected child1 to be finished.");
 		}
 
 	/**
