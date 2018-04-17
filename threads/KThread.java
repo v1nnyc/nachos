@@ -306,7 +306,7 @@ public class KThread {
 
 		//if thread is not finished and another calls
 		else{
-			while(status != statusFinished){
+			while(this.status != this.statusFinished){
 				Machine.interrupt().disable();
 				sleep();
 			}
