@@ -334,6 +334,8 @@ public class KThread {
 				// our solutions to the problems cannot busy wait, our test
 				// programs can!
 
+				child1.join();
+				
 				for (int i = 0; i < 5; i++) {
 				    System.out.println ("busy...");
 				    KThread.currentThread().yield();
