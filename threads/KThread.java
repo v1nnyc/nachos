@@ -318,7 +318,6 @@ public class KThread {
 				sleep();
 				System.out.println("stuck in here!");
 			}
-			System.out.println
 			currentThread.ready();
 			Machine.interrupt().enable();
 			joinThread = null;
