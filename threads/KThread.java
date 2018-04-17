@@ -328,7 +328,7 @@ public class KThread {
 					    System.out.println("I (heart) Nachos!");
 					}
 				    });
-				//child1.setName("child1").fork();
+				child1.setName("child1").fork();
 
 				// We want the child to finish before we call join.  Although
 				// our solutions to the problems cannot busy wait, our test
