@@ -248,14 +248,10 @@ public class KThread {
 	 * scheduled this thread to be destroyed by the next thread to run.
 	 */
 	public static void sleep() {
-		System.out.println(Machine.timer().getTime());
 		Lib.debug(dbgThread, "Sleeping thread: " + currentThread.toString());
-		System.out.println(Machine.timer().getTime());
 		Lib.assertTrue(Machine.interrupt().disabled());
-		System.out.println(Machine.timer().getTime());
 		if (currentThread.status != statusFinished)
 			currentThread.status = statusBlocked;
-		System.out.println(Machine.timer().getTime());
 		runNextThread();
 	}
 
@@ -318,9 +314,7 @@ public class KThread {
 	 * using <tt>run()</tt>.
 	 */
 	private static void runNextThread() {
-		System.out.println(Machine.timer().getTime());
 		KThread nextThread = readyQueue.nextThread();
-		System.out.println(Machine.timer().getTime());
 		if (nextThread == null)
 			nextThread = idleThread;
 		System.out.println(Machine.timer().getTime());
