@@ -315,7 +315,7 @@ public class KThread {
 			System.out.println("before sleep");
 			//currentThread.saveState();
 			System.out.println("before run");
-			this.run();
+			//this.run();
 			System.out.println("before second run");
 			//currentThread.restoreState();
 			System.out.println("before enable");
