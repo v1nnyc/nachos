@@ -315,7 +315,7 @@ public class KThread {
 			while(this.status != statusFinished){
 
 				Machine.interrupt().disable();
-				sleep();
+				//sleep();
 				System.out.println("stuck in here!");
 			}
 			currentThread.ready();
