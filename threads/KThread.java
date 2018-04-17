@@ -312,7 +312,7 @@ public class KThread {
 		else{
 			System.out.println(toString()+ " is NOT finished");
 			System.out.println(this.status);
-			while(this.status != this.statusFinished){
+			while(this.status != statusFinished){
 
 				Machine.interrupt().disable();
 				sleep();
