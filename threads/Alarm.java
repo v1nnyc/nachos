@@ -66,7 +66,9 @@ public class Alarm {
 		Machine.interrupt().disable();
 
 		sleepyThreads.add(thread);
+		System.out.println(Machine.timer().getTime());
 		KThread.sleep();
+		System.out.println(Machine.timer().getTime());
 
 		Machine.interrupt().enable();
 
