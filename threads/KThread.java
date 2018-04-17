@@ -317,7 +317,7 @@ public class KThread {
 				System.out.println("stuck in here!");
 				Machine.interrupt().disable();
 				this.run();
-				Machine.interrupt().enable();
+				//Machine.interrupt().enable();
 			}
 			System.out.println("before ready");
 			currentThread.ready();
