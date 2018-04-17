@@ -310,17 +310,17 @@ public class KThread {
 			Machine.interrupt().enable();
 		}*/
 		else{
-			KThread.currentThread().yield();
-			/*System.out.println(toString()+ " is NOT finished");
+			//KThread.currentThread().yield();
+			System.out.println(toString()+ " is NOT finished");
 			System.out.println(this.status);
 			while(this.status != statusFinished){
-
+				
 				Machine.interrupt().disable();
-				//sleep();
+				sleep();
 				System.out.println("stuck in here!");
 			}
 			currentThread.ready();
-			Machine.interrupt().enable();*/
+			Machine.interrupt().enable();
 			joinThread = null;
 			return;
 		}
