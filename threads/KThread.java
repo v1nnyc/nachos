@@ -315,6 +315,7 @@ public class KThread {
 			while(this.status != statusFinished){
 				System.out.println("in while" + this.status);
 				System.out.println("stuck in here!");
+				this.run();
 			}
 			System.out.println("before ready");
 			currentThread.ready();
