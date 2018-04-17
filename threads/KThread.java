@@ -313,11 +313,11 @@ public class KThread {
 			//KThread.currentThread().yield();
 			Machine.interrupt().disable();
 			System.out.println("before sleep");
-			currentThread.saveState();
+			//currentThread.saveState();
 			System.out.println("before run");
 			this.run();
 			System.out.println("before second run");
-			currentThread.restoreState();
+			//currentThread.restoreState();
 			System.out.println("before enable");
 			Machine.interrupt().enable();/*
 			System.out.println(toString()+ " is NOT finished");
