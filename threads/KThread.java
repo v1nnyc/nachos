@@ -311,11 +311,14 @@ public class KThread {
 		}*/
 		else{
 			System.out.println(toString()+ " is NOT finished");
+			System.out.println(this.status);
 			while(this.status != this.statusFinished){
+
 				Machine.interrupt().disable();
 				sleep();
 				System.out.println("stuck in here!");
 			}
+			System.out.println
 			currentThread.ready();
 			Machine.interrupt().enable();
 			joinThread = null;
