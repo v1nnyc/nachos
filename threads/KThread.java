@@ -318,10 +318,12 @@ public class KThread {
 	 * using <tt>run()</tt>.
 	 */
 	private static void runNextThread() {
+		System.out.println(Machine.timer().getTime());
 		KThread nextThread = readyQueue.nextThread();
+		System.out.println(Machine.timer().getTime());
 		if (nextThread == null)
 			nextThread = idleThread;
-
+		System.out.println(Machine.timer().getTime());
 		nextThread.run();
 	}
 
