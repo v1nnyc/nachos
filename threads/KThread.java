@@ -305,24 +305,24 @@ public class KThread {
 		}
 
 		//if thread is not finished and another calls
-		else{
-			KThread.currentThread().yield();
-			/*Machine.interrupt().disable();
-			this.joinQ.waitForAccess(currentThread);
-			Machine.interrupt().enable();*/
-
-		}
 		/*else{
+
+			Machine.interrupt().disable();
+			this.joinQ.waitForAccess(currentThread);
+			Machine.interrupt().enable();
+		}*/
+		else{
 			while(this.status != this.statusFinished){
 				Machine.interrupt().disable();
 				sleep();
+				System.out.println("stuck in here!");
 			}
 			currentThread.ready();
 			Machine.interrupt().enable();
 			joinThread = null;
 			return;
 			//joinL.release();
-		}*/
+		}
 	}
 
 	// Place Join test code in the KThread class and invoke test methods
