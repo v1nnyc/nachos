@@ -306,10 +306,11 @@ public class KThread {
 
 		//if thread is not finished and another calls
 		else{
-			Machine.interrupt().disable();
+			KThread.currentThread().yield();
+			/*Machine.interrupt().disable();
 			this.joinQ.waitForAccess(currentThread);
-			Machine.interrupt().enable();
-			
+			Machine.interrupt().enable();*/
+
 		}
 		/*else{
 			while(this.status != this.statusFinished){
