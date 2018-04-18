@@ -297,7 +297,7 @@ public class KThread {
 		this.setCaller(currentThread);
 
 		Machine.interrupt().disable();
-		currentThread.yield();
+		currentThread.sleep();
 		Machine.interrupt().enable();
 
 		return;
