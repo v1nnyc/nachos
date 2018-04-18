@@ -299,6 +299,10 @@ public class KThread {
 
 		this.setCaller(currentThread);
 
+		if(this.status == statusFinished){
+			return;
+		}
+
 		this.caller = currentThread;
 
 		Machine.interrupt().disable();
