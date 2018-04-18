@@ -314,6 +314,7 @@ public class KThread {
 			this.ready();
 			this.finish()
 			currentThread.ready();
+			Machine.interrupt().enable();
 			//KThread.currentThread().yield();
 			joinThread = null;
 		}
