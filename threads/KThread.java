@@ -312,7 +312,7 @@ public class KThread {
 			Machine.interrupt().disable();
 			currentThread.sleep();
 			this.ready();
-			this.finish()
+			this.finish();
 			currentThread.ready();
 			Machine.interrupt().enable();
 			//KThread.currentThread().yield();
