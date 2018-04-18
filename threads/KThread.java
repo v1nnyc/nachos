@@ -212,6 +212,8 @@ public class KThread {
 			System.out.println("in finish");
 		}
 
+		System.out.println("out of finish");
+
 		sleep();
 	}
 
