@@ -209,6 +209,7 @@ public class KThread {
 
 		if(currentThread.caller != null){
 			currentThread.caller.ready();
+			System.out.println("in finish");
 		}
 
 		sleep();
