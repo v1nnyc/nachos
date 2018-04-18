@@ -310,7 +310,6 @@ public class KThread {
 		}*/
 		else{
 			Machine.interrupt().disable();
-			this.ready();
 			sleep();
 
 			while(this.status != statusFinished){
