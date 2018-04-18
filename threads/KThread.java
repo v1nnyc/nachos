@@ -311,7 +311,7 @@ public class KThread {
 		else{
 			System.out.println(currentThread.status);
 			Machine.interrupt().disable();
-			currentThread.yield();
+			currentThread.sleep();
 			while(this.status != statusFinished){
 				//System.out.println(this.toString() + "is still running!");
 			}
