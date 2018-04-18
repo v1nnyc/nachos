@@ -309,29 +309,12 @@ public class KThread {
 			Machine.interrupt().enable();
 		}*/
 		else{
-
-			//KThread.currentThread().yield();
 			Machine.interrupt().disable();
-			System.out.println("before sleep");
-			//currentThread.saveState();
-			System.out.println("before run");
-			//this.run();
-			System.out.println("before second run");
-			//currentThread.restoreState();
-			System.out.println("before enable");
-			Machine.interrupt().enable();/*
-			System.out.println(toString()+ " is NOT finished");
-			System.out.println(this.status);
-			while(this.status != statusFinished){
-				System.out.println("in while" + this.status);
-
-				sleep();
-				System.out.println("stuck in here!");
-			}
-			System.out.println("before ready");
+			currentThread.sleep();
+			this.ready();
+			this.finish()
 			currentThread.ready();
-			System.out.println("after sleep");
-			Machine.interrupt().enable();*/
+			//KThread.currentThread().yield();
 			joinThread = null;
 		}
 
