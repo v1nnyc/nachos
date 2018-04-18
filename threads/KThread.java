@@ -311,10 +311,9 @@ public class KThread {
 		else{
 			System.out.println(currentThread.status);
 			Machine.interrupt().disable();
-			currentThread.status = statusBlocked;
-			this.status = statusRunning;
+			currentThread = this;
 			while(this.status != statusFinished){
-				System.out.println(this.toString() + "is still running!");
+				//System.out.println(this.toString() + "is still running!");
 			}
 			ready();
 			currentThread.status = statusReady;
