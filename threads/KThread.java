@@ -296,9 +296,9 @@ public class KThread {
 
 		this.setCaller(currentThread);
 
-		Machine.interrupt().disable();
+		//Machine.interrupt().disable();
 		currentThread.yield();
-		Machine.interrupt().enable();
+		//Machine.interrupt().enable();
 
 		return;
 	}
