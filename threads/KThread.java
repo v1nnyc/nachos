@@ -315,8 +315,6 @@ public class KThread {
 			while(this.status != statusFinished){
 				//System.out.println(this.toString() + "is still running!");
 			}
-			ready();
-			currentThread.status = statusReady;
 			Machine.interrupt().enable();
 			//KThread.currentThread().yield();
 			joinThread = null;
