@@ -80,6 +80,10 @@ public class KThread {
 		this.target = target;
 	}
 
+	public void setCaller(KThread caller){
+		this.caller = caller;
+	}
+
 	/**
 	 * Set the target of this thread.
 	 *
@@ -203,6 +207,10 @@ public class KThread {
 
 		currentThread.status = statusFinished;
 
+		if(currentThread.caller != null){
+			currentThread.caller.ready();
+		}
+
 		sleep();
 	}
 
@@ -280,42 +288,15 @@ public class KThread {
 	 * return immediately. This method must only be called once; the second call
 	 * is not guaranteed to return. This thread must not be the current thread.
 	 */
-	//private status Lock joinL = new Lock();
-
- 	private ThreadQueue joinQ = ThreadedKernel.scheduler.newThreadQueue(true);
-
-	private KThread joinThread = null;
 
 	public void join() {
 		System.out.println("Joining to thread: " + toString());
 
 		Lib.assertTrue(this != currentThread);
 
-		Lib.assertTrue(joinThread == null);
+		this.setCaller(currentThread);
 
-		joinThread = this;
-
-		//if thread is already finished
-		if(status == statusFinished){
-			System.out.println(toString()+ " is already finished");
-			joinThread = null;
-		}
-
-		//if thread is not finished and another calls
-		/*else{
-
-			Machine.interrupt().disable();
-			this.joinQ.waitForAccess(currentThread);
-			Machine.interrupt().enable();
-		}*/
-		else{
-			System.out.println(currentThread.status);
-			sleep();
-				//System.out.println(this.toString() + "is still running!");
-
-			//KThread.currentThread().yield();
-			joinThread = null;
-		}
+		currentThread.sleep();
 
 		return;
 	}
@@ -524,6 +505,8 @@ public class KThread {
 	private String name = "(unnamed thread)";
 
 	private Runnable target;
+
+	private KThread caller = null;
 
 	private TCB tcb;
 
