@@ -310,11 +310,11 @@ public class KThread {
 		}*/
 		else{
 			System.out.println(currentThread.status);
-			while(this.status != statusFinished){
+			Machine.interrupt().disable();
 				this.joinQ.waitForAccess(currentThread);
+				Machine.interrupt().enable();
 				currentThread.sleep();
 				//System.out.println(this.toString() + "is still running!");
-			}
 
 			//KThread.currentThread().yield();
 			joinThread = null;
