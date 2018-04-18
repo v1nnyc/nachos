@@ -302,13 +302,13 @@ public class KThread {
 		}
 
 		//if thread is not finished and another calls
-		/*else{
+		else{
 
 			Machine.interrupt().disable();
 			this.joinQ.waitForAccess(currentThread);
 			Machine.interrupt().enable();
-		}*/
-		else{
+		}
+		/*else{
 			Machine.interrupt().disable();
 			//sleep();
 			currentThread.status = statusReady;
@@ -321,7 +321,7 @@ public class KThread {
 			Machine.interrupt().enable();
 			//KThread.currentThread().yield();
 			joinThread = null;
-		}
+		}*/
 
 		return;
 	}
