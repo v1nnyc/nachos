@@ -309,7 +309,7 @@ public class KThread {
 			Machine.interrupt().enable();
 		}*/
 		else{
-			System.out.println(this.status);
+			System.out.println(currentThread.status);
 			Machine.interrupt().disable();
 
 			sleep();
