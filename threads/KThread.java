@@ -312,7 +312,9 @@ public class KThread {
 			Machine.interrupt().disable();
 			currentThread.sleep();
 			this.ready();
-			this.finish();
+			while(this.status != statusFinished){
+				System.out.println(this.toString() + "is still running!");
+			}
 			currentThread.ready();
 			Machine.interrupt().enable();
 			//KThread.currentThread().yield();
