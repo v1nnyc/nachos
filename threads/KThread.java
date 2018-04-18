@@ -311,9 +311,6 @@ public class KThread {
 		else{
 			System.out.println(currentThread.status);
 			sleep();
-			Machine.interrupt().disable();
-				this.joinQ.waitForAccess(currentThread);
-				Machine.interrupt().enable();
 				//System.out.println(this.toString() + "is still running!");
 
 			//KThread.currentThread().yield();
