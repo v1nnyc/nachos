@@ -289,6 +289,8 @@ public class KThread {
 	 * is not guaranteed to return. This thread must not be the current thread.
 	 */
 
+
+	 //pause
 	public void join() {
 		Lib.assertTrue(this != currentThread);
 
@@ -298,8 +300,13 @@ public class KThread {
 			return;
 		}
 
-		this.caller = currentThread;
-
+		if(this.caller == null){
+				this.caller = currentThread;
+		}
+		else{
+			System.out.println("already joined by another thread");
+			return;
+		}
 		Machine.interrupt().disable();
 		currentThread.sleep();
 		Machine.interrupt().enable();
@@ -342,7 +349,7 @@ public class KThread {
 						System.out.println("test 2");
 				}
 					});
-			child2.setName("child1").fork();
+			child2.setName("child2").fork();
 
 			child2.join();
 			System.out.println("After joining, child1 should be finished.");
@@ -353,6 +360,26 @@ public class KThread {
 		//parent tries to call join on itself
 		private static void joinTest3(){
 			currentThread.join();
+		}
+
+		//multiple threads try to call join
+		private static void joinTest4(){
+			KThread child1 = new KThread( new Runnable () {
+				public void run() {
+						System.out.println("test 4");
+				}
+					});
+			child1.setName("child1").fork();
+
+			KThread child2 = new KThread( new Runnable () {
+				public void run() {
+						System.out.println("also test 4!");
+				}
+					});
+			child2.setName("child2").fork();
+
+			child1.join();
+			child2.join();
 		}
 
 	/**
