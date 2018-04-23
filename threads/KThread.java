@@ -294,19 +294,19 @@ public class KThread {
 	public void join() {
 		Lib.assertTrue(this != currentThread);
 
-		this.setCaller(currentThread);
-
-		if(this.status == statusFinished){
-			return;
-		}
-
-		/*if(this.caller == null){
+		if(this.caller == null){
 				this.setCaller(currentThread);
 		}
 		else{
 			System.out.println("already joined by another thread");
 			return;
-		}*/
+		}
+		
+		if(this.status == statusFinished){
+			return;
+		}
+
+
 		Machine.interrupt().disable();
 		currentThread.sleep();
 		Machine.interrupt().enable();
