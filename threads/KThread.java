@@ -512,7 +512,7 @@ public class KThread {
 		new PingTest(0).run();
 		joinTest1();
 		joinTest2();
-		joinTest3();
+		//joinTest3();
 	}
 
 	private static final char dbgThread = 't';
