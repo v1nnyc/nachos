@@ -294,7 +294,7 @@ public class KThread {
 
 		this.setCaller(currentThread);
 
-		if(this.status == statusFinished){
+		else if(this.status == statusFinished){
 			return;
 		}
 
@@ -350,8 +350,9 @@ public class KThread {
 			Lib.assertTrue((child2.status == statusFinished), " Expected child1 to be finished.");
 		}
 
+		//parent tries to call join on itself
 		private static void joinTest3(){
-			System.out.println("wtf");
+			this.join();
 		}
 
 	/**
