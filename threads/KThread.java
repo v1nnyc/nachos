@@ -209,7 +209,6 @@ public class KThread {
 
 		if(currentThread.caller != null){
 			currentThread.caller.ready();
-			currentThread.caller = null;
 		}
 
 		sleep();
@@ -301,13 +300,13 @@ public class KThread {
 			return;
 		}
 
-		if(this.caller == null){
+		/*if(this.caller == null){
 				this.setCaller(currentThread);
 		}
 		else{
 			System.out.println("already joined by another thread");
 			return;
-		}
+		}*/
 		Machine.interrupt().disable();
 		currentThread.sleep();
 		Machine.interrupt().enable();
