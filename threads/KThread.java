@@ -301,7 +301,7 @@ public class KThread {
 		}
 
 		if(this.caller == null){
-				this.caller = currentThread;
+				this.setCaller(currentThread);
 		}
 		else{
 			System.out.println("already joined by another thread");
