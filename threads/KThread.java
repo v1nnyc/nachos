@@ -295,7 +295,7 @@ public class KThread {
 		Lib.assertTrue(this != currentThread);
 
 		if(this.status != statusReady){
-			this.status == statusReady;
+			this.status = statusReady;
 		}
 
 		if(this.caller == null){
