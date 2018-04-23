@@ -404,6 +404,7 @@ public class KThread {
 						for(int i = 0; i < 5; i++){
 							System.out.println("I'm the parent times 5");
 						}
+						child1.status = statusReady;
 						child1.join();
 						for(int i = 0; i < 5; i++){
 							System.out.println("I'm the parent times 5");
