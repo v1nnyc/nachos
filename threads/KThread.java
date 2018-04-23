@@ -209,7 +209,7 @@ public class KThread {
 
 		if(currentThread.caller != null){
 			currentThread.caller.ready();
-			currentThread.setCaller(null);
+			currentThread.caller = null;
 		}
 
 		sleep();
