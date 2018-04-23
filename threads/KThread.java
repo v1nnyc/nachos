@@ -302,7 +302,7 @@ public class KThread {
 			return;
 		}
 
-		else if(this.status == statusFinished){
+		if(this.status == statusFinished){
 			return;
 		}
 
