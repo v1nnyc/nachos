@@ -389,16 +389,18 @@ public class KThread {
 		//verify if a parent calls join on a
 		//child and the child is still executing, the parent waits
 		private static void joinTest5(){
-			KThread child1 = new KThread( new Runnable () {
-				public void run() {
-					for(int i = 0; i < 5; i++){
-						System.out.println("I'm the child times 5");
-					}
-				}
-					});
-			child1.setName("child1");
+
 
 			KThread child2 = new KThread( new Runnable () {
+				KThread child1 = new KThread( new Runnable () {
+					public void run() {
+						for(int i = 0; i < 5; i++){
+							System.out.println("I'm the child times 5");
+						}
+					}
+						});
+				child1.setName("child1").fork();
+
 				public void run() {
 						System.out.println("also test 4!");
 						for(int i = 0; i < 5; i++){
