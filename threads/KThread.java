@@ -381,8 +381,7 @@ public class KThread {
 			child1.join();
 			child2.join();
 
-			System.out.println("After joining, child1 should be finished.
-			and child2 should not be");
+			System.out.println("After joining, child1 should be finished. and child2 should not be");
 			System.out.println("is it? " + (child1.status == statusFinished));
 			System.out.println("is it? " + (child1.status == statusReady));
 		}
