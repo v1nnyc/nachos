@@ -544,6 +544,8 @@ public class KThread {
 		joinTest1();
 		joinTest2();
 		//joinTest3();
+		joinTest4();
+		joinTest5();
 	}
 
 	private static final char dbgThread = 't';
