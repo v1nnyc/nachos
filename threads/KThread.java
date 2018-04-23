@@ -294,7 +294,7 @@ public class KThread {
 
 		this.setCaller(currentThread);
 
-		else if(this.status == statusFinished){
+		if(this.status == statusFinished){
 			return;
 		}
 
