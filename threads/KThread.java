@@ -400,7 +400,7 @@ public class KThread {
 					}
 				}
 					});
-			//child1.setName("child1").fork();
+			child1.setName("child1");
 
 			KThread child2 = new KThread( new Runnable () {
 				public void run() {
