@@ -209,6 +209,7 @@ public class KThread {
 
 		if(currentThread.caller != null){
 			currentThread.caller.ready();
+			currentThread.setCaller(null);
 		}
 
 		sleep();
@@ -317,7 +318,7 @@ public class KThread {
 	// Place Join test code in the KThread class and invoke test methods
     // from KThread.selfTest().
 
-    // Simple test for the situation where the child finishes before
+    // Simple test for the situation where the child (finish)es before
     // the parent calls join on it.
 
     private static void joinTest1 () {
