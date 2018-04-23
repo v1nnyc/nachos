@@ -290,8 +290,6 @@ public class KThread {
 	 */
 
 	public void join() {
-		System.out.println("Joining to thread: " + toString());
-
 		Lib.assertTrue(this != currentThread);
 
 		this.setCaller(currentThread);
@@ -350,6 +348,10 @@ public class KThread {
 			System.out.println("After joining, child1 should be finished.");
 			System.out.println("is it? " + (child2.status == statusFinished));
 			Lib.assertTrue((child2.status == statusFinished), " Expected child1 to be finished.");
+		}
+
+		private static void joinTest3(){
+			System.out.println("wtf");
 		}
 
 	/**
@@ -482,6 +484,7 @@ public class KThread {
 		new PingTest(0).run();
 		joinTest1();
 		joinTest2();
+		joinTest3();
 	}
 
 	private static final char dbgThread = 't';
