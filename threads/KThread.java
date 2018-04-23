@@ -301,7 +301,7 @@ public class KThread {
 			System.out.println("already joined by another thread");
 			return;
 		}
-		
+
 		if(this.status == statusFinished){
 			return;
 		}
@@ -352,7 +352,7 @@ public class KThread {
 			child2.setName("child2").fork();
 
 			child2.join();
-			System.out.println("After joining, child1 should be finished.");
+			System.out.println("After joining, child2 should be finished.");
 			System.out.println("is it? " + (child2.status == statusFinished));
 			Lib.assertTrue((child2.status == statusFinished), " Expected child1 to be finished.");
 		}
@@ -380,6 +380,11 @@ public class KThread {
 
 			child1.join();
 			child2.join();
+
+			System.out.println("After joining, child1 should be finished.
+			and child2 should not be");
+			System.out.println("is it? " + (child1.status == statusFinished));
+			System.out.println("is it? " + (child1.status == statusReady));
 		}
 
 	/**
