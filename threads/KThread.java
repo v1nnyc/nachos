@@ -386,6 +386,33 @@ public class KThread {
 			System.out.println("is it? " + (child1.status == statusReady));
 		}
 
+		//verify if a parent calls join on a
+		//child and the child is still executing, the parent waits
+		private static void joinTest5(){
+			KThread child1 = new KThread( new Runnable () {
+				public void run() {
+					for(int i = 0; i < 5; i++){
+						System.out.println("I'm the child times 5");
+					}
+				}
+					});
+			child1.setName("child1").fork();
+
+			KThread child2 = new KThread( new Runnable () {
+				public void run() {
+						System.out.println("also test 4!");
+						for(int i = 0; i < 5; i++){
+							System.out.println("I'm the parent times 5");
+						}
+						child1.join();
+						for(int i = 0; i < 5; i++){
+							System.out.println("I'm the parent times 5");
+						}
+				}
+					});
+			child2.setName("child2").fork();
+		}
+
 	/**
 	 * Create the idle thread. Whenever there are no threads ready to be run,
 	 * and <tt>runNextThread()</tt> is called, it will run the idle thread. The
