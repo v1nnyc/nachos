@@ -294,10 +294,6 @@ public class KThread {
 	public void join() {
 		Lib.assertTrue(this != currentThread);
 
-		if(this.status != statusReady){
-			this.status = statusReady;
-		}
-
 		if(this.caller == null){
 				this.setCaller(currentThread);
 		}
