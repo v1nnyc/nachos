@@ -352,7 +352,7 @@ public class KThread {
 
 		//parent tries to call join on itself
 		private static void joinTest3(){
-			this.join();
+			currentThread.join();
 		}
 
 	/**
