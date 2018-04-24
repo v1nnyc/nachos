@@ -71,5 +71,5 @@ public class Condition2 {
 
 	private Lock conditionLock;
 
-	private Queue<KThread> butt = new Queue<KThread>();
+	private Queue<KThread> butt = new LinkedList<KThread>();
 }
