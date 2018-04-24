@@ -2,7 +2,7 @@ package nachos.threads;
 
 import nachos.machine.*;
 
-import java.util.*;
+import java.util.Queue;
 
 /**
  * An implementation of condition variables that disables interrupt()s for
