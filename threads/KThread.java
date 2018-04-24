@@ -38,7 +38,7 @@ import nachos.machine.*;
  *
  * </blockquote>
  */
-public class KThread {
+public class KThread implements JoinTest{
 	/**
 	 * Get the current thread.
 	 *
