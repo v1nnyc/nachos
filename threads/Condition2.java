@@ -36,7 +36,7 @@ public class Condition2 {
 		conditionLock.release();
 		Machine.interrupt().disable();
 		KThread.sleep();
-		Machine.interrupt().enable;
+		Machine.interrupt().enable();
 		conditionLock.acquire();
 	}
 
