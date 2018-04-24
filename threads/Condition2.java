@@ -33,7 +33,7 @@ public class Condition2 {
 	 */
 	public void sleep() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
-		butt.push(KThread.currentThread());
+		butt.add(KThread.currentThread());
 
 		conditionLock.release();
 		Machine.interrupt().disable();
@@ -51,7 +51,7 @@ public class Condition2 {
 
 		if(!butt.isEmpty()){
 			Machine.interrupt().disable();
-			butt.pop().ready();
+			butt.remove().ready();
 			Machine.interrupt().enable();
 		}
 
