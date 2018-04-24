@@ -303,6 +303,7 @@ public class KThread {
 		}
 		else{
 			System.out.println("already joined by another thread");
+			return;
 		}
 
 		if(this.status == statusFinished){
