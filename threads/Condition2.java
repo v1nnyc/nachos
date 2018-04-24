@@ -5,16 +5,16 @@ import nachos.machine.*;
 /**
  * An implementation of condition variables that disables interrupt()s for
  * synchronization.
- * 
+ *
  * <p>
  * You must implement this.
- * 
+ *
  * @see nachos.threads.Condition
  */
 public class Condition2 {
 	/**
 	 * Allocate a new condition variable.
-	 * 
+	 *
 	 * @param conditionLock the lock associated with this condition variable.
 	 * The current thread must hold this lock whenever it uses <tt>sleep()</tt>,
 	 * <tt>wake()</tt>, or <tt>wakeAll()</tt>.
@@ -31,9 +31,12 @@ public class Condition2 {
 	 */
 	public void sleep() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
+		butt.push(KThread.currentThread());
 
 		conditionLock.release();
-
+		Machine.interrupt().disable();
+		KThread.sleep();
+		Machine.interrupt().enable
 		conditionLock.acquire();
 	}
 
@@ -43,6 +46,13 @@ public class Condition2 {
 	 */
 	public void wake() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
+
+		if(!butt.isEmpty()){
+			Machine.interrupt().disable();
+			butt.pop().ready();
+			Machine.interrupt().enable();
+		}
+
 	}
 
 	/**
@@ -51,7 +61,13 @@ public class Condition2 {
 	 */
 	public void wakeAll() {
 		Lib.assertTrue(conditionLock.isHeldByCurrentThread());
+
+		while(!butt.isEmpty()){
+			wake();
+		}
 	}
 
 	private Lock conditionLock;
+
+	private Queue<KThread> butt = new Queue<KThread>();
 }
