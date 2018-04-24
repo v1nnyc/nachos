@@ -294,7 +294,7 @@ public class KThread {
 	public void join() {
 		Lib.assertTrue(this != currentThread);
 
-		Lib.assertTrue(currentThread.called == false);
+		//Lib.assertTrue(currentThread.called == false);
 		currentThread.called = true;
 
 
