@@ -297,14 +297,7 @@ public class KThread {
 		Lib.assertTrue(currentThread.called == false);
 		currentThread.called = true;
 
-
-		if(this.caller == null){
-				this.setCaller(currentThread);
-		}
-		else{
-			System.out.println("already joined by another thread");
-			return;
-		}
+		this.setCaller(currentThread);
 
 		if(this.status == statusFinished){
 			return;
